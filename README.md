@@ -1,5 +1,5 @@
 # PBL-2
-PBL 2 MID TERM EVALUATION
+PBL 2 
 wardrobe-recommendation/
 │
 ├── index.html
