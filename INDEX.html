@@ -1,49 +1,184 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Wardrobe Recommendation System</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Wardrobe · Dress Smarter, Not Harder</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts: Playfair Display + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header>
-    <h1>Wardrobe Recommendation System</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="details.html">System Details</a>
-    </nav>
-</header>
-
-<section>
-    <h2>Project Introduction</h2>
-    <p>
-        This project aims to build an intelligent wardrobe recommendation system
-        that provides personalized outfit suggestions using Machine Learning and NLP.
-    </p>
-</section>
-
-<section>
-    <h2>Key Features</h2>
-    <ul>
-        <li>Personalized context understanding using NLP</li>
-        <li>Wardrobe digitization using Computer Vision</li>
-        <li>Complete outfit recommendations</li>
-        <li>Style compatibility scoring</li>
-        <li>Ethical & sustainable fashion focus</li>
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar">
+    <div class="nav-logo">
+      <span class="logo-icon">✦</span>
+      <span class="logo-text">Wardrobe<em>AI</em></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">How It Works</a></li>
+      <li><a href="#">Style Guide</a></li>
+      <li><a href="#" class="nav-cta">Get Started</a></li>
     </ul>
-</section>
+  </nav>
 
-<section>
-    <h2>Problem Statement</h2>
-    <p>
-        Existing fashion recommendation systems lack contextual understanding,
-        fail to utilize existing inventory, and provide sub-optimal outfit suggestions.
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <!-- Decorative blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="hero-badge">✦ AI-Powered Styling</div>
+
+    <h1 class="hero-heading">
+      Dress <span class="accent">Smarter</span>,<br>Not Harder
+    </h1>
+
+    <p class="hero-sub">
+      Upload your wardrobe, tell us the occasion, and let our AI curate<br>
+      the perfect outfit for you — every single time.
     </p>
-</section>
 
-<footer>
-    <p>Developed by Krish Agrawal |Harsh kumar singh| School of Computer Science</p>
-</footer>
+    <div class="hero-scroll">
+      <span>Start Styling</span>
+      <div class="scroll-arrow">↓</div>
+    </div>
+  </section>
 
+  <!-- ── MAIN FORM ── -->
+  <main class="form-wrapper">
+
+    <!-- ─ STEP 1: Upload ─ -->
+    <div class="card" id="step1">
+      <div class="card-header">
+        <span class="step-badge">01</span>
+        <div>
+          <h2 class="card-title">Upload Your Wardrobe Items</h2>
+          <p class="card-desc">Let us see what you're working with</p>
+        </div>
+      </div>
+
+      <!-- Drop Zone -->
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" multiple accept=".jpg,.jpeg,.png,.webp" hidden />
+        <div class="drop-icon">👗</div>
+        <p class="drop-title">Drag &amp; Drop or <span class="browse-link" id="browseBtn">Click to Browse</span></p>
+        <p class="drop-sub">Upload photos of your tops, bottoms, shoes &amp; accessories</p>
+        <p class="drop-types">Supports JPG, PNG, WEBP · Multiple files allowed</p>
+      </div>
+
+      <!-- Preview grid (populated by JS) -->
+      <div class="preview-grid" id="previewGrid"></div>
+    </div>
+
+    <!-- ─ STEP 2: Occasion ─ -->
+    <div class="card" id="step2">
+      <div class="card-header">
+        <span class="step-badge">02</span>
+        <div>
+          <h2 class="card-title">Select the Occasion</h2>
+          <p class="card-desc">Where are you headed today?</p>
+        </div>
+      </div>
+
+      <div class="pill-group" id="occasionGroup">
+        <button class="pill active" data-value="Casual">👟 Casual</button>
+        <button class="pill" data-value="Formal">💼 Formal</button>
+        <button class="pill" data-value="Party">🎉 Party</button>
+        <button class="pill" data-value="Sports">🏃 Sports</button>
+        <button class="pill" data-value="Travel">✈️ Travel</button>
+        <button class="pill" data-value="Date Night">🌹 Date Night</button>
+      </div>
+    </div>
+
+    <!-- ─ STEP 3: Weather ─ -->
+    <div class="card" id="step3">
+      <div class="card-header">
+        <span class="step-badge">03</span>
+        <div>
+          <h2 class="card-title">Current Weather</h2>
+          <p class="card-desc">We'll dress you for the forecast</p>
+        </div>
+      </div>
+
+      <div class="weather-grid" id="weatherGroup">
+        <button class="weather-card active" data-value="Hot">
+          <span class="w-icon">☀️</span>
+          <span class="w-label">Hot</span>
+        </button>
+        <button class="weather-card" data-value="Cold">
+          <span class="w-icon">❄️</span>
+          <span class="w-label">Cold</span>
+        </button>
+        <button class="weather-card" data-value="Rainy">
+          <span class="w-icon">🌧️</span>
+          <span class="w-label">Rainy</span>
+        </button>
+        <button class="weather-card" data-value="Windy">
+          <span class="w-icon">🌬️</span>
+          <span class="w-label">Windy</span>
+        </button>
+        <button class="weather-card" data-value="Cloudy">
+          <span class="w-icon">☁️</span>
+          <span class="w-label">Cloudy</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ─ STEP 4: Style Preference ─ -->
+    <div class="card" id="step4">
+      <div class="card-header">
+        <span class="step-badge">04</span>
+        <div>
+          <h2 class="card-title">Describe Your Style Preference</h2>
+          <p class="card-desc">Any details help our AI nail the look</p>
+        </div>
+      </div>
+
+      <textarea
+        id="styleInput"
+        class="style-textarea"
+        rows="3"
+        placeholder="e.g. casual outfit for winter, formal look for a job interview, trendy streetwear for a concert..."
+      ></textarea>
+    </div>
+
+    <!-- ─ CTA BUTTON ─ -->
+    <div class="cta-wrapper">
+      <button class="cta-btn" id="generateBtn">
+        <span class="btn-text">Generate Recommendation</span>
+        <span class="btn-arrow">→</span>
+      </button>
+    </div>
+
+    <!-- ─ RECOMMENDATION OUTPUT ─ -->
+    <div class="result-card" id="resultCard">
+      <div class="result-loading" id="resultLoading">
+        <div class="spinner"></div>
+        <p>Curating your perfect look…</p>
+      </div>
+
+      <div class="result-content" id="resultContent">
+        <div class="result-top">
+          <span class="result-badge">✦ Your AI Look</span>
+          <h3 class="result-title">Suggested Outfit</h3>
+        </div>
+        <div class="outfit-pieces" id="outfitPieces"></div>
+        <p class="result-note" id="resultNote"></p>
+        <button class="retry-btn" id="retryBtn">Try Another Look ↺</button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <p>✦ WardrobeAI · Dress Smarter, Not Harder · <span id="year"></span></p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
