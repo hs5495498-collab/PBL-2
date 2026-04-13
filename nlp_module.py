@@ -188,7 +188,6 @@ if __name__ == "__main__":
     batch_results = batch_parse(sample_queries)
 
     print(f"{'Query':<45} {'Weather':<10} {'Occasion':<12} {'Style'}")
-    print("-" * 85)
     for item in batch_results:
         p = item["parsed"]
         print(f"{item['query'][:44]:<45} {p['weather']:<10} {p['occasion']:<12} {p['style']}")
