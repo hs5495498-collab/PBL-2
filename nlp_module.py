@@ -1,41 +1,9 @@
-# =============================================================================
 #  nlp_module.py
-#  AI-Based Wardrobe Recommendation System
-#  Module 2: NLP Query Parsing — Keyword-Based Text Understanding
-# =============================================================================
-#
-#  HOW NLP WORKS IN THIS SYSTEM:
-#  ──────────────────────────────
-#  Natural Language Processing (NLP) converts raw user text into structured
-#  data a program can act on.
-#
-#  Example:
-#    Input  : "I need a casual outfit for cold and rainy weather"
-#    Output : { "weather": "Cold", "occasion": "Casual", "style": "Everyday" }
-#
-#  WHY KEYWORD-BASED (not ML-based NLP)?
-#  ──────────────────────────────────────
-#  • No extra dependencies (no transformers, no GPU, no training data)
-#  • Fully transparent — you can read and tweak every rule
-#  • Fast: runs in microseconds
-#  • Perfect for a college project where the vocabulary is controlled
-#  • Models like BERT are overkill for a small, fixed keyword set
-#
-#  The approach: lowercase the query → scan for known keywords →
-#                map them to structured fields → apply defaults for
-#                anything not found.
-#
-# =============================================================================
+
 
 import json     # To pretty-print and return structured output
 import re       # Regular expressions for clean text splitting
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-# KEYWORD DICTIONARIES
-# Each key = canonical label (matches dataset column values exactly)
-# Each value = list of words / phrases the user might say
-# ─────────────────────────────────────────────────────────────────────────────
 
 WEATHER_KEYWORDS: dict[str, list[str]] = {
     "Hot":    ["hot", "warm", "sunny", "summer", "heat", "scorching", "blazing"],
@@ -76,9 +44,7 @@ DEFAULTS = {
 }
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# HELPER: Pre-process text
-# ─────────────────────────────────────────────────────────────────────────────
+
 def preprocess_query(query: str) -> str:
     """
     Lowercase the text and remove punctuation so keyword matching is reliable.
@@ -90,11 +56,6 @@ def preprocess_query(query: str) -> str:
     query = re.sub(r"[^\w\s]", " ", query)              # Remove punctuation
     query = re.sub(r"\s+", " ", query)                  # Collapse whitespace
     return query
-
-
-# ─────────────────────────────────────────────────────────────────────────────
-# HELPER: Find keyword match in processed text
-# ─────────────────────────────────────────────────────────────────────────────
 def find_match(text: str, keyword_dict: dict[str, list[str]]) -> str | None:
     """
     Scan `text` for any keyword in `keyword_dict`.
@@ -111,9 +72,6 @@ def find_match(text: str, keyword_dict: dict[str, list[str]]) -> str | None:
     return None     # No match found
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# CORE FUNCTION: Parse NLP query
-# ─────────────────────────────────────────────────────────────────────────────
 def parse_query(user_query: str, verbose: bool = True) -> dict:
     """
     Parse free-form user text into a structured dict with three keys:
