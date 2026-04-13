@@ -1,31 +1,8 @@
-# =============================================================================
-#  image_processing.py
-#  AI-Based Wardrobe Recommendation System
-#  Module 1: Image Processing — Loading, Normalization & Basic Handling
-# =============================================================================
-#
-#  WHY NORMALIZATION?
-#  ------------------
-#  Raw images store pixel values as integers from 0 to 255.
-#  ML models train faster and more stably when inputs are small, consistent
-#  numbers. Dividing every pixel by 255.0 squeezes values into [0.0, 1.0].
-#
-#  HOW IT HELPS ML MODELS:
-#  • Prevents any single channel (R/G/B) from dominating others
-#  • Speeds up gradient descent (optimizer finds the minimum faster)
-#  • Matches the expected input range of most pre-trained models
-#    (e.g. MobileNet, ResNet expect values in [0,1] or [-1,1])
-#  • Reduces risk of numerical overflow / vanishing gradients
-#
-# =============================================================================
+
 
 import cv2          # OpenCV – image reading, resizing, saving
 import numpy as np  # NumPy  – array math
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-# STEP 1 — Load the image from disk
-# ─────────────────────────────────────────────────────────────────────────────
 def load_image(image_path: str) -> np.ndarray:
     """
     Load an image file and return it as a NumPy array (BGR format).
@@ -56,9 +33,6 @@ def load_image(image_path: str) -> np.ndarray:
     return image
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# STEP 2 — Resize to the standard model input size (224×224)
-# ─────────────────────────────────────────────────────────────────────────────
 def resize_image(image: np.ndarray, target_size: tuple = (224, 224)) -> np.ndarray:
     """
     Resize the image to target_size using INTER_AREA interpolation
@@ -78,9 +52,6 @@ def resize_image(image: np.ndarray, target_size: tuple = (224, 224)) -> np.ndarr
     return resized
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# STEP 3 — Normalize pixel values from [0, 255] → [0.0, 1.0]
-# ─────────────────────────────────────────────────────────────────────────────
 def normalize_image(image: np.ndarray) -> np.ndarray:
     """
     Convert pixel values from uint8 [0, 255] to float32 [0.0, 1.0].
@@ -97,16 +68,13 @@ def normalize_image(image: np.ndarray) -> np.ndarray:
     -------
     np.ndarray with dtype float32 and values in [0.0, 1.0]
     """
-    # ── BEFORE normalization ──
     print("\n── Before Normalization ──────────────────────────────")
     print(f"   dtype        : {image.dtype}")
     print(f"   pixel range  : [{image.min()}, {image.max()}]")
     print(f"   sample pixel (top-left corner): {image[0, 0]}")
 
-    # ── Normalize ──
     normalized = image.astype(np.float32) / 255.0   # Scale to [0, 1]
 
-    # ── AFTER normalization ──
     print("\n── After Normalization ───────────────────────────────")
     print(f"   dtype        : {normalized.dtype}")
     print(f"   pixel range  : [{normalized.min():.4f}, {normalized.max():.4f}]")
@@ -116,9 +84,6 @@ def normalize_image(image: np.ndarray) -> np.ndarray:
     return normalized
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# STEP 4 — Convert BGR → RGB (most ML frameworks expect RGB)
-# ─────────────────────────────────────────────────────────────────────────────
 def bgr_to_rgb(image: np.ndarray) -> np.ndarray:
     """
     OpenCV loads images in BGR channel order.
@@ -130,9 +95,6 @@ def bgr_to_rgb(image: np.ndarray) -> np.ndarray:
     return rgb
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# STEP 5 — Expand dimensions for model input (add batch axis)
-# ─────────────────────────────────────────────────────────────────────────────
 def prepare_for_model(image: np.ndarray) -> np.ndarray:
     """
     ML models expect a batch of images: shape (batch, height, width, channels).
@@ -146,9 +108,6 @@ def prepare_for_model(image: np.ndarray) -> np.ndarray:
     return batch
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# STEP 6 — Optionally save the normalized image back to disk
-# ─────────────────────────────────────────────────────────────────────────────
 def save_normalized_image(normalized: np.ndarray, output_path: str) -> None:
     """
     Convert float32 image back to uint8 (multiply by 255) and save.
@@ -160,9 +119,6 @@ def save_normalized_image(normalized: np.ndarray, output_path: str) -> None:
     print(f"[✔] Normalized image saved to '{output_path}'")
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# MAIN — Run the full pipeline
-# ─────────────────────────────────────────────────────────────────────────────
 def process_wardrobe_image(image_path: str, save_output: bool = False) -> np.ndarray:
     """
     Full image processing pipeline:
@@ -200,13 +156,8 @@ def process_wardrobe_image(image_path: str, save_output: bool = False) -> np.nda
     return normalized
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# DEMO — run when executed directly
-# ─────────────────────────────────────────────────────────────────────────────
+
 if __name__ == "__main__":
-    # ── DEMO WITH A SYNTHETIC IMAGE ──────────────────────────────────────────
-    # (Replace "sample_outfit.jpg" with any real image path on your system)
-    # We create a synthetic 300×400 image for demonstration purposes.
 
     print("\n[INFO] No real image provided — generating a synthetic demo image.\n")
 
@@ -223,6 +174,5 @@ if __name__ == "__main__":
     print(f"Final dtype        : {result.dtype}")
     print(f"Value range        : [{result.min():.4f}, {result.max():.4f}]")
 
-    # ── HOW TO USE WITH A REAL IMAGE ─────────────────────────────────────────
     # result = process_wardrobe_image("path/to/your/outfit.jpg")
     # model.predict(np.expand_dims(result, axis=0))
