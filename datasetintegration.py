@@ -1,37 +1,19 @@
-# =============================================================================
-#  dataset_integration.py
-#  AI-Based Wardrobe Recommendation System
-#  Module 3: Dataset Integration — Filtering Outfits via NLP Output
-# =============================================================================
-#
-#  WHAT THIS MODULE DOES:
-#  ──────────────────────
-#  1. Loads the wardrobe dataset from a CSV file into a pandas DataFrame
-#  2. Accepts NLP-parsed input { weather, occasion, style }
-#  3. Filters the dataset for matching rows
-#  4. Returns (and prints) the best outfit recommendation
-#
-#  CSV COLUMN STRUCTURE (example):
-#  ┌─────────┬──────────┬────────────┬──────────────────────────────────────┐
+#  CSV COLUMN STRUCTURE (example)
 #  │ Weather │ Occasion │   Style    │               Outfit                  │
-#  ├─────────┼──────────┼────────────┼──────────────────────────────────────┤
 #  │ Cold    │ Casual   │ Everyday   │ Chunky knit + jeans + Chelsea boots  │
 #  │ Hot     │ Formal   │ Elegant    │ Linen blazer + trousers + loafers    │
 #  │ Rainy   │ Party    │ Streetwear │ Leather jacket + slip dress + boots  │
-#  └─────────┴──────────┴────────────┴──────────────────────────────────────┘
-#
-# =============================================================================
-
-import pandas as pd          # Data loading and filtering
-import random                # For random selection among equal matches
-import os                    # File existence check
-from nlp_module import parse_query, print_parsed  # Reuse our NLP module
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+import pandas as pd          
+import random                
+import os                    
+from nlp_module import parse_query, print_parsed  
+
+
 # BUILT-IN SAMPLE DATASET
 # Used when no external CSV is provided (perfect for first-time runs)
-# ─────────────────────────────────────────────────────────────────────────────
+
 SAMPLE_DATA = {
     "Weather":  ["Hot",   "Hot",     "Cold",   "Cold",    "Rainy",   "Rainy",
                  "Windy", "Windy",   "Cloudy", "Cloudy",  "Hot",     "Cold",
