@@ -1,0 +1,31 @@
+Weather,Occasion,Style,Outfit
+Hot,Casual,Everyday,White linen tee + chino shorts + slip-on sneakers + sunglasses
+Hot,Formal,Elegant,Light linen blazer + white shirt + slim trousers + loafers
+Hot,Party,Elegant,Floral midi dress + block-heel sandals + mini clutch + gold hoops
+Hot,Sports,Sporty,Moisture-wicking tee + running shorts + trail runners + sports cap
+Hot,Travel,Everyday,Breathable linen shirt + travel shorts + slip-on loafers + straw hat
+Hot,Date Night,Elegant,Off-shoulder top + linen trousers + strappy sandals + delicate necklace
+Cold,Casual,Everyday,Chunky knit sweater + straight jeans + Chelsea boots + beige scarf
+Cold,Formal,Elegant,Wool suit + silk tie + Oxford shoes + cashmere pocket square
+Cold,Party,Streetwear,Velvet blazer + black turtleneck + slim trousers + ankle boots
+Cold,Sports,Sporty,Thermal base layer + fleece joggers + running jacket + beanie
+Cold,Travel,Everyday,Puffer jacket + merino wool base + travel pants + ankle boots
+Cold,Date Night,Elegant,Fitted turtleneck + leather trousers + block-heel boots + mini bag
+Rainy,Casual,Everyday,Waterproof anorak + dark slim jeans + white sneakers + mini backpack
+Rainy,Formal,Elegant,Dark suit + trench coat + leather brogues + compact umbrella
+Rainy,Party,Streetwear,Sequin mini skirt + black bodysuit + block-heel boots + statement earrings
+Rainy,Sports,Sporty,Waterproof running jacket + compression tights + trail shoes + headband
+Rainy,Travel,Everyday,Quick-dry trousers + waterproof sneakers + packable rain jacket + tote
+Rainy,Date Night,Elegant,Silk blouse + dark cigarette pants + kitten heels + trench coat
+Windy,Casual,Everyday,Trench coat + black turtleneck + straight jeans + ankle boots
+Windy,Formal,Elegant,Double-breasted blazer + pressed shirt + wool trousers + Oxfords
+Windy,Party,Streetwear,Leather jacket + satin slip dress + heeled mules + bold lip
+Windy,Sports,Sporty,Wind-resistant jacket + athletic leggings + grip trainers + buff
+Windy,Travel,Everyday,Windbreaker + straight jeans + sturdy boots + crossbody bag
+Windy,Date Night,Elegant,Wrap dress + leather jacket + heeled booties + simple ear cuffs
+Cloudy,Casual,Minimalist,Oversized hoodie + high-waist jeans + clean white sneakers + cap
+Cloudy,Formal,Elegant,Charcoal suit + light blue shirt + tie + derby shoes
+Cloudy,Party,Elegant,Wrap midi dress + wedge heels + chain bag + layered necklaces
+Cloudy,Sports,Sporty,Long-sleeve top + sweat shorts + cross-trainers + wristband
+Cloudy,Travel,Everyday,Neutral hoodie + comfortable jeans + white trainers + backpack
+Cloudy,Date Night,Elegant,Midi slip dress + fitted blazer + mule heels + pearl studs
