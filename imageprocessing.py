@@ -13,7 +13,7 @@ def load_image(image_path: str) -> np.ndarray:
     Returns
     -------
     np.ndarray
-        Image array with shape (height, width, 3) and dtype uint8.
+        Image array with shape (height, width, 3) 
         Raises FileNotFoundError if the path is invalid.
     """
     image = cv2.imread(image_path)          # Read image (OpenCV loads as BGR)
