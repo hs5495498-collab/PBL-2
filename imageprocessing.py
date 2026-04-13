@@ -1,5 +1,3 @@
-
-
 import cv2          # OpenCV – image reading, resizing, saving
 import numpy as np  # NumPy  – array math
 
